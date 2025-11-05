@@ -90,7 +90,7 @@ POST http://localhost:3000/api/categories
 Content-Type: application/json
 
 {
-  "name": "Electronics"
+  "name": "Seeds"
 }
 ```
 
@@ -101,10 +101,10 @@ Content-Type: application/json
 
 {
   "category_id": "65a1b2c3d4e5f6g7h8i9j0k1",
-  "name": "Laptop",
+  "name": "Corn Seeds",
   "price": 999.99,
   "image_url": "https://example.com/laptop.jpg",
-  "description": "High-performance laptop"
+  "description": "Organic, non-GMO, or natural benefits for a healthier lifestyle and environment"
 }
 ```
 
