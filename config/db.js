@@ -1,19 +1,26 @@
 const mongoose = require('mongoose');
 
+let isConnected = false; // Cache the connection in serverless
+
 const connectDB = async () => {
+  if (isConnected) {
+    return;
+  }
   try {
-    // MongoDB connection string with URL encoded password
-    const mongoURI = 'mongodb+srv://mguru2401_db_user:mguru%402401@agriapi.udc5n9x.mongodb.net/agriapi?retryWrites=true&w=majority';
-    
+    const mongoURI = process.env.MONGODB_URI;
+    if (!mongoURI) {
+      throw new Error('MONGODB_URI is not set');
+    }
+
     await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    
+    isConnected = true;
     console.log('MongoDB Connected Successfully');
   } catch (error) {
     console.error('MongoDB Connection Error:', error.message);
-    process.exit(1);
+    throw error;
   }
 };
 
